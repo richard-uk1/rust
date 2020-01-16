@@ -1533,6 +1533,13 @@ impl fmt::Debug for PathBuf {
     }
 }
 
+impl fmt::Write for PathBuf {
+    fn write_str(&mut self, s: &str) -> fmt::Result {
+        self.push(s);
+        Ok(())
+    }
+}
+
 #[stable(feature = "rust1", since = "1.0.0")]
 impl ops::Deref for PathBuf {
     type Target = Path;
